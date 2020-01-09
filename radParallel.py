@@ -10,9 +10,9 @@ import multiprocessing as mp
 def avgMove(pop1,pop1Climate,pop2Climate,movingRatio,OppClimate,dist):
     if((pop1Climate+OppClimate)*(pop1Climate+pop2Climate+OppClimate) != 0):
         # with distance dependency
-        return((movingRatio*pop1*pop1Climate*pop2Climate)/((pop1Climate+OppClimate)*(pop1Climate+pop2Climate+OppClimate)))*(np.exp(-dist*.25))
+        #return((movingRatio*pop1*pop1Climate*pop2Climate)/((pop1Climate+OppClimate)*(pop1Climate+pop2Climate+OppClimate)))*(np.exp(-dist*.25))
      # without distance dependency
-        #return((movingRatio*pop1*pop1Climate*pop2Climate)/((pop1Climate+OppClimate)*(pop1Climate+pop2Climate+OppClimate))))
+        return((movingRatio*pop1*pop1Climate*pop2Climate)/((pop1Climate+OppClimate)*(pop1Climate+pop2Climate+OppClimate))))
     else:
         return 0
 
@@ -23,7 +23,8 @@ def IO(var,point, point2):
     for el in np.copy(var).tolist():
         if el[1] <= dist and el[0] != point and el[0] != point2:
             varT.append(el[2])
-    return np.max(varT)
+    #print(varT)
+    return np.sum(varT)
 
 
 #calculate all distances between all points in the grid to one specific point
@@ -118,7 +119,7 @@ def allUpdate(grid,climateGrid):
 
 
 if __name__ == '__main__':
-    grid = np.genfromtxt('india.csv', delimiter=' ') 
+    grid = np.genfromtxt('grid.csv', delimiter=' ') 
     # size of the grid 
     x = grid.shape[0]
     y = grid.shape[1]

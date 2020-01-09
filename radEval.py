@@ -23,8 +23,8 @@ def IO(var,point, point2):
     for el in np.copy(var).tolist():
         if el[1] <= dist and el[0] != point and el[0] != point2:
             varT.append(el[2])
-    return np.max(varT)
-
+#    return np.max(varT)
+    return np.sum(varT)
 
 #calculate all distances between all points in the grid to one specific point
 def calcDistGrid(point,grid):
